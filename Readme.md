@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Нигина Зарипова](https://up.htmlacademy.ru/javascript-individual/2/user/2375987).
-* Наставник: `Неизвестно`.
+* Наставник: `Павел Ившин` (https://htmlacademy.ru/profile/id818775).
 
 ---
 
