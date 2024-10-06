@@ -1,7 +1,11 @@
 
-// записывать массив лучше в строчку или как объекте ?
+
 // id случайные от 1 до 15
-const idProfile = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,];
+const idProfile = [];
+const idTotal = 25;
+for(let i = 1; i <= idTotal; i++) {
+  idProfile.push(i);
+}
 
 // вставила в массив картинки
 const avatarProfile = [
@@ -26,8 +30,12 @@ const descriptionProfile = [
   'Классно',
 ];
 
-// количество лайков, тут нужно было до 200 дописать ??
-const likesProfile = [15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32, 33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,];
+// количество лайков,
+const likesProfile = [];
+const likesTotal = 200;
+for (let j = 15; j <= likesTotal; j++){
+  likesProfile.push(j);
+}
 
 // комментарии к фото
 const messageProfile = [
@@ -66,13 +74,15 @@ const createProfile = () => {
 
   // возвращаем объект, в котором  обращения к индексам массива
   return {
-    id : idProfile[randomId],
+    id: idProfile[randomId],
     avatar: avatarProfile[randomAvatar],
     description: descriptionProfile[randomDescription],
     likes: likesProfile[randomLikes],
     message:messageProfile[randomMessage],
     name: nameProfile[randomName],
-  }};
+  };
+};
 const quantityCount = 25;
 const newProfile = Array.from({length:quantityCount}, createProfile);
 console.log(newProfile);
+
