@@ -37,7 +37,6 @@ const messageProfile = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
 const nameProfile = [
-  'Нигина',
   'Люба',
   'Саша',
   'Тория',
@@ -45,8 +44,31 @@ const nameProfile = [
   'Олег',
   'Марина',
 ];
+// Рандомайзер случайного числа,
+const randomInteger = (a, b) => {
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+};
 
 // создаю функцию, где мы будем создавать объект
 const createProfile = () => {
-  
-}
+  const randomId = randomInteger (0, idProfile.length - 1);
+  const randomAvatar = randomInteger (0, avatarProfile.length - 1);
+  const randomDescription = randomInteger (0, descriptionProfile.length - 1);
+  const randomLikes = randomInteger (0, likesProfile.length - 1);
+  const randomMessage = randomInteger (0, messageProfile.length - 1);
+  const randomName = randomInteger (0, nameProfile.length - 1);
+
+  // возвращаем объект, в котором  обращения к индексам массива
+  return {
+    id : idProfile[randomId],
+    avatar: avatarProfile[randomAvatar],
+    description: descriptionProfile[randomDescription],
+    likes: likesProfile[randomLikes],
+    message:messageProfile[randomMessage],
+    name: nameProfile[randomName],
+  }
+};
+console.log(createProfile());
