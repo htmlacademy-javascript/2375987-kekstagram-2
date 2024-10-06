@@ -22,6 +22,8 @@ const descriptionProfile = [
   'Мое хобби',
   'Отпуск',
   'На работе',
+  'На даче',
+  'Классно',
 ];
 
 // количество лайков, тут нужно было до 200 дописать ??
@@ -43,6 +45,7 @@ const nameProfile = [
   'Паша',
   'Олег',
   'Марина',
+  'Сережа',
 ];
 // Рандомайзер случайного числа,
 const randomInteger = (a, b) => {
@@ -69,6 +72,7 @@ const createProfile = () => {
     likes: likesProfile[randomLikes],
     message:messageProfile[randomMessage],
     name: nameProfile[randomName],
-  }
-};
-console.log(createProfile());
+  }};
+const quantityCount = 25;
+const newProfile = Array.from({length:quantityCount}, createProfile);
+console.log(newProfile);
