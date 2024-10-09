@@ -1,4 +1,3 @@
-
 // description, строка — описание фотографии
 const descriptionProfile = [
   'Отдыхаю',
@@ -62,7 +61,4 @@ const createProfile = () => {
   };
 };
 const countNumber = 25;
-const newProfile = Array.from({
-  length: countNumber
-}, createProfile);
-console.log(newProfile);
+const newProfile = Array.from({length: countNumber}, createProfile);
