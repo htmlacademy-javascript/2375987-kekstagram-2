@@ -1,9 +1,3 @@
-// id Это число от 1 до 25. Идентификаторы не должны повторяться.
-// const idProfile = [];
-// const idTotal = 25;
-// for (let i = 1; i <=25; i++){
-//  idProfile.push(i);
-// };
 
 // description, строка — описание фотографии
 const descriptionProfile = [
@@ -43,7 +37,7 @@ const randomInteger = (a, b) => {
   const result = Math.random() * (upper - lower + 1) + lower;
   return Math.floor(result);
 };
-// ренерирую число, дальше буду подставлять, не уверена
+// генерирую число
 function getRandomInRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -52,6 +46,7 @@ const createProfile = () => {
   const randomDescription = randomInteger(0, descriptionProfile.length - 1);
   const randomMessage = randomInteger(0, messageProfile.length - 1);
   const randomName = randomInteger(0, nameProfile.length - 1);
+
   return {
     id: getRandomInRange(1, 25),
     url: `photos/${getRandomInRange(1,25)}.jpg`,
