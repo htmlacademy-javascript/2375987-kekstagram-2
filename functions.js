@@ -18,4 +18,3 @@ const checkPallindrome = function (stringNew) {
 };
 
 checkPallindrome('Нигин');
-
