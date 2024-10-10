@@ -40,25 +40,36 @@ const randomInteger = (a, b) => {
 function getRandomInRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+const randomDescription = randomInteger(0, descriptionProfile.length - 1);
+const randomMessage = randomInteger(0, messageProfile.length - 1);
+const randomName = randomInteger(0, nameProfile.length - 1);
 
-const createProfile = () => {
-  const randomDescription = randomInteger(0, descriptionProfile.length - 1);
-  const randomMessage = randomInteger(0, messageProfile.length - 1);
-  const randomName = randomInteger(0, nameProfile.length - 1);
-
-  return {
-    id: getRandomInRange(1, 25),
-    url: `photos/${getRandomInRange(1,25)}.jpg`,
-    description: descriptionProfile[randomDescription],
-    likes: getRandomInRange(15, 200),
-
-    comments: [{
+const createComents = () => {
+  const comentsRandom = randomInteger(0, 30);
+  const comments = [];
+  for (let i = 0; i <= comentsRandom; i++) {
+    comments.push({
       idComments: getRandomInRange(10, 80),
       avatar: `img/avatar-${getRandomInRange(1,6)}.svg.`,
       message: messageProfile[randomMessage],
       name: nameProfile[randomName],
-    }]
+    });
+  }
+  return comments;
+};
+
+const createProfile = () => {
+  return {
+    id: getRandomInRange(1, 25),
+    url: `photos/${getRandomInRange(1, 25)}.jpg`,
+    description: descriptionProfile[randomDescription],
+    likes: getRandomInRange(15, 200),
+    comments: createComents()
   };
 };
+
 const countNumber = 25;
-const newProfile = Array.from({length: countNumber}, createProfile);
+const newProfile = Array.from({
+  length: countNumber
+}, createProfile);
+console.log(newProfile);
