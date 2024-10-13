@@ -35,7 +35,7 @@ const checkWork = (beginning, ending, meeting, time) => {
     if (ending === '17:30' || ending === '17:3') {
       if (meeting === '14:00' || meeting === '14:0') {
         if (time === 90) {
-          return true;
+          return true;о
         }
       }
     }

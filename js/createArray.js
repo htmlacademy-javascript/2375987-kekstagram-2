@@ -40,4 +40,4 @@ const createNewProfile = () => Array.from({
 }, createProfile);
 
 
-export{createNewProfile};
+export {createNewProfile};
