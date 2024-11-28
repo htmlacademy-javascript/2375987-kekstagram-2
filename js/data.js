@@ -27,7 +27,6 @@ const nameProfile = [
   'Паша',
   'Олег',
   'Марина',
-  'Сережа',
 ];
 
 export {descriptionProfile, messageProfile, nameProfile};
