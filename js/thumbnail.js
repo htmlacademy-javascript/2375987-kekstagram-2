@@ -22,13 +22,24 @@
 //   likes: getRandomInRange(minLikes, maxLikes),
 //   comments: createComents()
 // }
-
+import {createNewProfile} from './createArray.js';
 // Ищем шаблон
-const puctureTemplate = document.querySelector('#picture').content.querySelector('.picture');
-// Ищем контейнер куда будет вставляться шаблон
-const picturesContainer = document.querySelector('.pictures');
+const POST_AMOUNT = 25;
+const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
+const pictures = document.querySelector('.pictures');
+const documentFragment = document.createDocumentFragment();
+const photos = createNewProfile(POST_AMOUNT);
 
-const pictureImg = document.querySelector('.picture__img');
-const pictureComments = document.querySelector('.picture__comments');
-const pictureLikes = document.querySelector('.picture__likes');
+photos.forEach((photo) => {
+  const picture = pictureTemplate.cloneNode(true);
+  picture.querySelector('.picture__img').src = photo.url;
+  picture.querySelector('.picture__img').alt = photo.description;
+  picture.querySelector('.picture__likes').textContent = photo.likes;
+  picture.querySelector('.picture__comments').textContent = photo.comments.length;
+  documentFragment.appendChild(picture);
+});
+
+pictures.appendChild(documentFragment);
+
+export {photos};
 
