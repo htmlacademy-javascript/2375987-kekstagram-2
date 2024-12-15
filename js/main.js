@@ -1,3 +1,6 @@
-// import {createNewProfile} from './createArray.js';
-// console.log(createNewProfile());
-import {photos} from './thumbnail.js';
+import {photosMiniatures} from './createThumbnail.js';
+import './openBigPhotoShow.js';
+
+photosMiniatures.addEventListener('click', (evt) => {
+
+});
