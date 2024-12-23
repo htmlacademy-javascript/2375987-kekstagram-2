@@ -59,7 +59,7 @@ const openPicture = (pictureId) => {
 
   // Обновляем счетчики комментариев
   showLikes.textContent = photoCurrent.comments.length;
-  totalLikes.textContent = photoCurrent.comments.length; // Если нужно показывать общее количество комментариев
+  totalLikes.textContent = photoCurrent.comments.length; //  показывать общее количество комментариев
 
   // Показываем большую фотографию
   pictureBig.classList.remove('hidden');
