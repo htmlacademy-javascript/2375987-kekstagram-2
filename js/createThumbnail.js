@@ -19,5 +19,5 @@ photosMiniatures.forEach(({id, url, description, comments, likes}) => {
 
 pictures.appendChild(documentFragment);
 
-export {photosMiniatures};
+export {pictures};
 
