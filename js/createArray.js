@@ -16,7 +16,7 @@ const createComents = () => {
   for (let i = 0; i <= comentsRandom; i++) {
     comments.push({
       idComments: getRandomInRange(1, 80),
-      avatar: `img/avatar-${getRandomInRange(1,6)}.svg.`,
+      avatar: `img/avatar-${getRandomInRange(1, 6)}.svg`,
       message: messageProfile[randomMessage],
       name: nameProfile[randomName],
     });

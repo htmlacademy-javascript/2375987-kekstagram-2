@@ -1,5 +1,5 @@
 import {
-  pictures
+  photosMiniatures
 } from './createThumbnail.js';
 import {
   isEscapeKey
@@ -10,18 +10,35 @@ const pictureBigImg = pictureBig.querySelector('.big-picture__img').querySelecto
 const countLikes = pictureBig.querySelector('.likes-count');
 const showLikes = pictureBig.querySelector('.social__comment-shown-count');
 const totalLikes = pictureBig.querySelector('.social__comment-total-count');
-const commentList = pictureBig.querySelector('.social_comments');
+const commentList = pictureBig.querySelector('.social__comments');
 const commentItem = pictureBig.querySelector('.social__comment');
 const caption = pictureBig.querySelector('.social__caption');
 const pictureBigcloseButton = document.querySelector('#picture-cancel');
 const body = document.body;
-pictureBig.classList.remove('hidden');
+
+// Убедитесь, что модальное окно скрыто при загрузке
+pictureBig.classList.add('hidden');
 
 // / создаю функцию где добавляю класс хидден, чтоб показать фотку
 const hidePictureBig = () => {
+  // Закрываем модальное окно
   pictureBig.classList.add('hidden');
   body.classList.remove('modal-open');
+
+  // Очищаем комментарии
+  commentList.innerHTML = '';
+
+  // Сбрасываем данные изображения
+  pictureBigImg.src = '';
+  pictureBigImg.alt = '';
+  countLikes.textContent = '';
+  caption.textContent = '';
+
+  // Сбрасываем состояние кнопки "Загрузить еще"
+  const commentsLoaderButton = pictureBig.querySelector('.social__comments-loader');
+  commentsLoaderButton.classList.remove('hidden');
 };
+
 // функция закрытия, которая вызывает функцию
 const closePictureBig = () => {
   hidePictureBig();
@@ -33,10 +50,8 @@ pictureBigcloseButton.addEventListener('click', () => {
 });
 
 // делаю функцию чтоб заполнять данные о конкретной фотографии:
-
-
 const openPicture = (pictureId) => {
-  const photoCurrent = pictures.find((photo) => photo.id === Number(pictureId));
+  const photoCurrent = photosMiniatures.find((photo) => photo.id === Number(pictureId));
   const commentsFragment = document.createDocumentFragment();
 
   pictureBigImg.src = photoCurrent.url;
@@ -59,7 +74,7 @@ const openPicture = (pictureId) => {
 
   // Обновляем счетчики комментариев
   showLikes.textContent = photoCurrent.comments.length;
-  totalLikes.textContent = photoCurrent.comments.length; //  показывать общее количество комментариев
+  totalLikes.textContent = photoCurrent.comments.length; // показывать общее количество комментариев
 
   // Показываем большую фотографию
   pictureBig.classList.remove('hidden');
@@ -71,6 +86,16 @@ document.addEventListener('keydown', (evt) => {
     closePictureBig();
   }
 });
+
+// Удалить обработчик после закрытия окна
+const handleDocumentKeydown = (evt) => {
+  if (isEscapeKey(evt)) {
+    closePictureBig();
+    document.removeEventListener('keydown', handleDocumentKeydown);
+  }
+};
+
+document.addEventListener('keydown', handleDocumentKeydown);
 
 export {
   openPicture
