@@ -61,12 +61,17 @@ const openPicture = (pictureId) => {
   commentList.innerHTML = '';
 
   // Добавление новых комментариев
-  photoCurrent.comments.forEach((comment) => {
+  photoCurrent.comments.forEach((comment, index) => {
     const commentSocial = commentItem.cloneNode(true); // Клонируем элемент шаблона
     commentSocial.querySelector('.social__picture').src = comment.avatar; // Устанавливаем аватар
     commentSocial.querySelector('.social__picture').alt = comment.name; // Устанавливаем alt
     commentSocial.querySelector('.social__text').textContent = comment.message; // Устанавливаем текст комментария
-    commentsFragment.appendChild(commentSocial); // Добавляем комментарий во фрагмент
+
+    // Устанавливаем уникальный атрибут, чтобы не было конфликтов
+    commentSocial.setAttribute('data-comment-id', index);
+
+    // Добавляем комментарий во фрагмент
+    commentsFragment.appendChild(commentSocial);
   });
 
   // Вставляем все комментарии в список
@@ -75,6 +80,7 @@ const openPicture = (pictureId) => {
   // Обновляем счетчики комментариев
   showLikes.textContent = photoCurrent.comments.length;
   totalLikes.textContent = photoCurrent.comments.length; // показывать общее количество комментариев
+  caption.textContent = photoCurrent.description;
 
   // Показываем большую фотографию
   pictureBig.classList.remove('hidden');
